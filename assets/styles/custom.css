@@ -1,0 +1,134 @@
+body {
+	padding-top: 60px;
+	padding-bottom: 40px;
+	/*background-color: #355572 !important;*/
+	/*background-color: #CADDEC !important;*/
+}
+
+/* *************************************************************************************
+PANELS CONFIGURATIONS
+*************************************************************************************** */
+
+/*Panel Size*/
+
+.pn {
+	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.cards {
+  padding-bottom: 10px;
+}
+
+/* .trips
+=================================================================== */
+.trips {
+	background: #e9f0f4;
+}
+
+.trips .trips-header {
+	background: #54bae6;
+	padding-top: 5px;
+  padding-left: 15px;
+	margin-bottom: 5px;
+}
+
+.trips .trips-header p {
+	color: white;
+	/*margin-left: 5px;*/
+	margin-right: 5px;
+}
+
+.trips .trips-header p big {
+	font-size: 20px;
+}
+
+.trips .data {
+	margin-right: 15px;
+	margin-left: 0px;
+	color: #272b34;
+}
+
+.trips .data i {
+    line-height: 15px;
+    width: 30px;
+    float: right;
+    text-align: -webkit-right;
+}
+
+.goleft {
+	text-align: left;
+}
+
+.goright {
+	text-align: right;
+}
+
+.centered {
+	text-align: center;
+}
+
+/* .info-box
+=================================================================== */
+.info-box {
+    min-height: 100px;
+    margin-bottom: 30px;
+    padding: 10px;
+    color: white;
+    -webkit-box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.35), 0 3px 1px -1px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.35), 0 3px 1px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.35), 0 3px 1px -1px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.info-box i {
+    display: block;
+    /*height: 150px;*/
+    font-size: 60px;
+    /*line-height: 100px;*/
+    width: 50px;
+    float: left;
+    text-align: -webkit-left;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.info-box .count {
+    margin-top: 20px;
+    text-align: right;
+    font-size: 18px;
+    font-weight: 600;
+}
+.info-box .title {
+    font-size: 12px;
+    text-align: right;
+    font-weight: 600;
+}
+
+/* .graphs by
+=================================================================== */
+.graph {
+	padding: 0px;
+    height: 120px;
+    width: 160px;
+}
+
+
+/*----------------	color------------------------*/
+.blue-bg {
+  color : #fff;
+  background : #57889c;
+  background-color : #57889c;
+}
+
+.green-bg {
+  color : #fff;
+  background : #26c281;
+  background-color : #26c281;
+}
+
+.brown-bg {
+  color : #fff;
+  background : #d1b993;
+  background-color : #d1b993;
+}
+
+/*----------------------------------------*/

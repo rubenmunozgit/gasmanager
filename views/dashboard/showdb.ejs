@@ -1,0 +1,202 @@
+<!--Form Input Data -->
+<div class="container">
+    <div class="row">
+
+        <div class="col-xs-12 col-sm-6 col-md-6">                
+            <button class="btn btn-warning btn-block" type="button" data-toggle="collapse" data-target="#collapseForm">
+                <span class="fa fa-fire"></span> Fire
+            </button>
+            <div class="collapse" id="collapseForm">
+                <div class="page-header">   
+                    <h3>Fuel the Fire</h3>
+                </div>
+                <form class="form-horizontal" action='/dashboard/create/<%= req.session.User.id %>' method="POST" id="DashboardForm">
+
+                    <div class="form-group">
+                        <!-- distance -->
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                <i class="fa fa-road"></i></span>
+                                <input type="number" step="0.1" id="distance" name="distance" placeholder="Distance done" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <!-- Gas Qty -->
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                <i class="fa fa-tint "></i></span>
+                                <input type="number" step="0.01" id="qty" name="qty" placeholder="How much did you put?" class="form-control">
+                                <span class="input-group-addon">.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <!-- Price -->
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                <i class="fa fa-money"></i></span>
+                                <input type="number" step="0.01" id="totalprice" name="totalprice" placeholder="How much did it cost?" class="form-control">
+                                <span class="input-group-addon">.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <!-- Full deposit Flag   -->
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                                Deposit
+                                <input type="checkbox" checked id="fulldepot" name="fulldepot" data-toggle="toggle" data-on="Full" data-off="Partial" data-width="75">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                      <!-- Button -->
+                      <div class="col-sm-5">
+                        <button type="submit" class="btn btn-warning">Save the data</button>
+                        <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                      </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <!-- View Average Graph by Month -->
+        <div class="     pull-right">
+            <div class="col-lg-6 col-md-6 col-sm-4 col-xs-6">
+                <h4>Distance By Month</h4>
+                <div class="graph" id="KmByMonthGraph"></div>
+            </div>                     
+            
+            <div class="col-lg-6 col-md-6 col-sm-4 col-xs-6">
+                <h4>Spent By Month</h4>
+                <div class="graph" id="PriceByMonthGraph"></div>
+            </div>
+        </div>
+        <!-- End Average Graph by Month -->
+    </div>
+</div>
+<!-- End Form Input Data -->
+<p></p>
+<!-- View Average -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-4">
+            <div class="info-box blue-bg"><h6>Average By Full Deposit</h6>
+                <i class="fa fa-road fa-3x"></i>
+                <div class="count"><%= avgDistance %> Km</div>
+                <div class="title"><%= percDistance %>% last time 
+                </div>                                    
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-4">
+            <div class="info-box brown-bg"><h6>Average By Full Deposit</h6>
+                <i class="fa fa-tint fa-3x"></i>
+                <div class="count"><%= avgConsumed %> l/100km</div>
+                <div class="title"><%= percConsumed %>% last time
+                </div>                       
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-4">
+            <div class="info-box green-bg"><h6>Average Spend</h6>
+                <i class="fa fa-money fa-3x"></i>
+                <div class="count"><%= avgPrice %>$</div>
+                <div class="title"><%= percPrice %>% last time
+                </div>
+            </div>                     
+        </div>
+    </div>
+</div>
+<!-- End View Average -->
+
+<!-- Track Your Data Graph -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">					
+                    <div class="btn-group pull-right">
+                        <div class="btn-group">
+                            <button type="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-calendar"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right ranges" role="menu">
+                                <li class="active"><a data-range='30'>1 Month</a></li>
+                                <li><a data-range='90'>3 Months</a></li>
+                                <li><a data-range='180'>6 Months</a></li>
+                                <li><a data-range='240'>9 Months</a></li>
+                                <li><a data-range='365'>1 Year</a></li>
+                            </ul>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-eye"></i>
+                            </button>
+                                <ul class="dropdown-menu dropdown-menu-right graphView" role="menu">
+                                    <li><a graphView='unitprice'>Unit Price</a></li>
+                                    <li class="active"><a graphView='consumed'>Consumption</a></li>
+                                    <li><a graphView='totalprice'>Paid Price</a></li>
+                                    <li><a graphView='distance'>Distance</a></li>
+                                </ul>
+                        </div>
+                    </div>
+                    <h3 class="panel-title"><i class="fa fa-line-chart fa-fw"></i> Track Your Data</h3>
+                </div>
+
+                <div class="panel-body">
+                    <div style="position: relative;" id="trackDataGraph">
+                    <input type="hidden" name="ajaxuserid" value="<%= req.session.User.id %>"/>
+                    </div>
+                </div>	
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Track Your Data Graph -->
+
+<!-- Cards with data -->
+<div class="container">
+    
+    <div class="row" >
+        <% _.each(dshbtable, function(register) { %>
+            <div class="col-md-12 cards" data-id="gasMeter" data-model="dashboard">
+                <div class="trips pn">
+                    <div class="trips-header">
+                        <div class="row">
+                            <div class="col-sm-4 col-xs-4">
+                                <p>Traveled: <%= register.distance %> Km</p>
+                            </div>
+                            <div class="col-sm-4 col-xs-4 centered">
+                                <p>You Paid: <%= register.totalprice %> $</p>
+                            </div>
+                            <div class="col-sm-4 col-xs-4 goright">
+                                <p><%= register.date %></p>
+                            </div>
+                        </div>
+                    </div><!-- /trips header -->
+                    
+                    <div class="row data">
+                        <div class="col-sm-6 col-xs-6 goleft">
+                            <h4>You paid at: <b><%= register.unitprice %></b> eur/l</h4>
+                            <h6>Tank Filled by: <%= register.qty %> l</h6>
+                            <% if (register.fulldepot) { %>
+                            <h6>It was a full tank</h6>
+                            <% } %>
+                        </div>
+                        <div class="col-sm-6 col-xs-6 goright">
+                            <h5><i class="fa fa-tint fa-2x"></i></h5>
+                            <h5><b><%= (register.consumed==undefined) ? "--" : register.consumed %></b> l/100km</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <%  }) %>
+    </div>
+    
+</div>
+<!-- End Cards with data 
