@@ -20,8 +20,7 @@ module.exports = {
 			user: req.param('user')
 		}
 		//Create a line in Dasboard Table for the user signed_in
-		console.log(dshbObj);
-
+		
 		Dashboard.find({
 			where: {user: dshbObj.user},
 			sort: 'createdAt DESC'
@@ -60,7 +59,7 @@ module.exports = {
 				/*res.json({
 					recordsByDate: recordsByDate
 				});*/
-				console.log(dshbObj);
+				 
 				Dashboard.create(dshbObj, function dashboardcreated (err, dashboard) {
 					//if error return the error
 					if(err) {
@@ -161,7 +160,7 @@ module.exports = {
 		var daysFrom = 180;
 		var today = new Date();
 		var dateFrom = new Date(today.setDate(today.getDate() - daysFrom));
-		console.log(dateFrom);
+		
 		Dashboard.find({
 			user: userid,
 			date: {'>': dateFrom}
@@ -198,7 +197,7 @@ module.exports = {
 			    dataByMonth[idx] = new bymonth(j,grouped[j][0].price,grouped[j][0].dist );
 			    idx++;
 			}
-			console.log(dataByMonth);
+			
 
 			/*End Calc By Month*/
 			res.json(
