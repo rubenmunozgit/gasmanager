@@ -109,10 +109,18 @@ module.exports = {
 			avgDistance = (sumaDistance/tripsFull).toFixed(1);
 			avgConsumed = (sumaConsumed/tripsFull).toFixed(2);
 			avgPrice = (sumaPrice/dshbtable.length).toFixed(2);
-			percDistance = (((dshbtable[0].distance-avgDistance)/avgDistance)*100).toFixed(1);
-			percConsumed = (((dshbtable[0].consumed-avgConsumed)/avgConsumed)*100).toFixed(1);
-			percPrice = (((dshbtable[0].totalprice-avgPrice)/avgPrice)*100).toFixed(1);
+			if (dshbtable.length == 0) {//No data in DB. Init de ShowDashBoard
+				percDistance = 0;
+				percConsumed = 0;
+				percPrice = 0;
+			}
+			else {
+				percDistance = (((dshbtable[0].distance-avgDistance)/avgDistance)*100).toFixed(1);
+				percConsumed = (((dshbtable[0].consumed-avgConsumed)/avgConsumed)*100).toFixed(1);
+				percPrice = (((dshbtable[0].totalprice-avgPrice)/avgPrice)*100).toFixed(1);
 
+			}
+			
 			
 			// pass the array down to the /views/dashboad/showdb.ejs page
 			res.view({
