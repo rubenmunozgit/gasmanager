@@ -16,8 +16,7 @@ $(document).ready(function () {
 	});
 
 	getGraphData();
-  getGraphByMonth();
-	showByMonthGraph();
+  	getGraphByMonth();
 });
 
 function getGraphData() {
