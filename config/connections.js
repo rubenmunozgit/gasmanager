@@ -62,7 +62,7 @@ module.exports.connections = {
     host: 'ds029824.mongolab.com',//'localhost',
     port: 29824,//27017,
     user: 'heroku_1g0l4g9p',//'username',
-    password: '0Sh5oOEZOaOvORWOT+BJHo0rvDM=',//'password',
+    password: 'rE50fXyFBhZ9WNZoU2w/ffcws0w=',//'password',
     database: 'heroku_1g0l4g9p'//'your_mongo_db_name_here'
   },
 
