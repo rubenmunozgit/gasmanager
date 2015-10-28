@@ -12,7 +12,7 @@ module.exports = {
   attributes: {
 
   	user: {
-  		type: 'int'
+  		type: 'string'
   	},
 
   	distance: {
