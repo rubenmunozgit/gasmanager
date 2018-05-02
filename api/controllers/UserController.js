@@ -25,10 +25,11 @@ module.exports = {
 			//log user in in session
 			req.session.authenticated = true;
 			req.session.User = user;
-			//After succesfull
-			//redirect to the show action
-			res.redirect('/dashboard/showdb/' + user.id);
+			
 		});
+		//After succesfull
+		//redirect to the show action
+		res.redirect('/dashboard/showdb/' + user.id);
 	}
 	
 };
